@@ -9,8 +9,8 @@ class AppToast {
       msg: message,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.SNACKBAR,
-      backgroundColor: AppColor.whiteColor,
-      textColor: Colors.black,
+      backgroundColor: AppColor.blackColor.withOpacity(0.5),
+      textColor: Colors.white,
       fontSize: SizeUtils.horizontalBlockSize * 3,
     );
   }

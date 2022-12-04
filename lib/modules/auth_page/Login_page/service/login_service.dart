@@ -1,29 +1,34 @@
 import 'dart:convert';
 
 import 'package:task/helper/network_helper.dart';
-import 'package:task/modules/auth_modules/Login_page/modal/login_modal.dart';
+import 'package:task/modules/auth_page/Login_page/modal/login_modal.dart';
 import 'package:task/res/appconfig.dart';
 
 class LoginService {
   static final NetworkAPICall _networkAPICall = NetworkAPICall();
 
   static Future<LoginModal> getLoginData({
-    String? username,
-    String? password,
+    required String username,
+    required String password,
   }) async {
     final body = {
       "username": username,
       "password": password,
     };
-    final header = {"Connection": "keep-alive"};
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Cookie': 'PHPSESSID=d672112chd0acai730g8d7960q'
+    };
+
     try {
       final response = await _networkAPICall.post(
         AppConfig.loginUrl,
         json.encode(body),
-        header: header,
+        header: headers,
       );
-      print("response------${response}");
-      return LoginModal.fromJson(response);
+
+      return loginModalFromJson(json.encode(response));
     } catch (e) {
       rethrow;
     }

@@ -82,115 +82,64 @@ class CustomTextField extends StatelessWidget {
             if (!isPassword) {
               isObscure = false;
             }
-            return IntrinsicHeight(
-              child: TextFormField(
-                readOnly: readOnly,
-                validator: validator,
-                // style: TextStyle(
-                //   color: textColor ?? AppColors.black,
-                //   fontSize: fontSize ?? SizeUtils.fSize_14(),
-                //   fontWeight: FontWeight.w400,
-                // ),
-                onTap: onTap,
-                obscureText: isObscure,
-                obscuringCharacter: '*',
-                onChanged: onChanged,
-                controller: controller,
-                maxLines: maxLine,
-                maxLength: maxLength,
-                keyboardType: keyboardType,
-                focusNode: focusNode,
-                textAlignVertical: textAlignVertical,
-                // cursorColor: cursorColor ?? AppColors.black,
-                textAlign: textAlign ?? TextAlign.start,
-                enabled: enabled,
-                decoration: InputDecoration(
-                  prefix: prefixWidget,
-                  contentPadding: contentPadding ??
-                      EdgeInsets.symmetric(
-                          horizontal: SizeUtils.horizontalBlockSize * 6,
-                          vertical: SizeUtils.verticalBlockSize * 2),
-                  isDense: true,
-                  prefixIcon: prefixIcon,
-                  suffixIcon: suffixIcon == null && isPassword
-                      ? IconButton(
-                          icon: Icon(
-                            isObscure
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,
-                            color: Colors.grey,
-                            size: SizeUtils.verticalBlockSize * 2.6,
-                          ),
-                          onPressed: () {
-                            _isObscure.value = !isObscure;
-                          },
-                        )
-                      : suffixIcon,
-                  counterText: "",
-                  // contentPadding: const EdgeInsets.all(12),
-                  hintText: hintText,
-                  // hintStyle: TextStyle(
-                  //   fontFamily: AssetsPath.robotoFonts,
-                  //   color: hintTextColor ?? AppColors.textColor,
-                  //   fontSize: hintFontSize ?? SizeUtils.fSize_14(),
-                  //   fontWeight: hintTextWeight ?? FontWeight.w400,
-                  // ),
-                  filled: true,
-                  fillColor: fillColor ?? AppColor.whiteColor,
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(radius ?? 10),
-                    ),
-                    borderSide: BorderSide(
-                      color: disabledColor ?? Colors.transparent,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(radius ?? 10),
-                    ),
-                    borderSide: BorderSide(
-                      color: enableColor ?? Colors.transparent,
-                    ),
-                  ),
-                  // border: OutlineInputBorder(
-                  //   borderRadius: BorderRadius.all(
-                  //     Radius.circular(radius ?? 10),
-                  //   ),
-                  //   borderSide: BorderSide(
-                  //     color: focusedColor ?? Colors.transparent,
-                  //   ),
-                  // ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        radius ?? 10,
-                      ),
-                    ),
-                    borderSide: BorderSide(
-                      color: focusedColor ?? Colors.transparent,
-                    ),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        radius ?? 10,
-                      ),
-                    ),
-                    borderSide: const BorderSide(
-                      color: Colors.red,
-                    ),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        radius ?? 10,
-                      ),
-                    ),
-                    borderSide: const BorderSide(
-                      color: Colors.red,
-                    ),
-                  ),
+            return TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              readOnly: readOnly,
+              validator: validator,
+              onTap: onTap,
+              obscureText: isObscure,
+              obscuringCharacter: '*',
+              onChanged: onChanged,
+              controller: controller,
+              maxLines: maxLine,
+              maxLength: maxLength,
+              keyboardType: keyboardType,
+              focusNode: focusNode,
+              textAlignVertical: textAlignVertical,
+              cursorColor: cursorColor ?? AppColor.blackColor,
+              textAlign: textAlign ?? TextAlign.start,
+              enabled: enabled,
+              decoration: InputDecoration(
+                prefix: prefixWidget,
+                contentPadding: contentPadding ??
+                    EdgeInsets.symmetric(
+                        horizontal: SizeUtils.horizontalBlockSize * 6,
+                        vertical: SizeUtils.verticalBlockSize * 2),
+                isDense: true,
+                prefixIcon: prefixIcon,
+                suffixIcon: suffixIcon == null && isPassword
+                    ? IconButton(
+                        icon: Icon(
+                          isObscure
+                              ? Icons.visibility_off_outlined
+                              : Icons.visibility_outlined,
+                          color: Colors.grey,
+                          size: SizeUtils.verticalBlockSize * 2.6,
+                        ),
+                        onPressed: () {
+                          _isObscure.value = !isObscure;
+                        },
+                      )
+                    : suffixIcon,
+                counterText: "",
+                // contentPadding: const EdgeInsets.all(12),
+                hintText: hintText,
+
+                filled: true,
+                fillColor: fillColor ?? AppColor.whiteColor,
+
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                ),
+
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                ),
+                errorBorder: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                ),
+                focusedErrorBorder: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
                 ),
               ),
             );
