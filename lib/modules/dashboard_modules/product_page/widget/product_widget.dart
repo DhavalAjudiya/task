@@ -58,6 +58,10 @@ Widget productCard({
             ],
           ),
         ),
+        // Image.network(
+        //   ima,
+        //   width: SizeUtils.horizontalBlockSize * 43,
+        // ),
         Image.asset(
           ima,
           width: SizeUtils.horizontalBlockSize * 43,
